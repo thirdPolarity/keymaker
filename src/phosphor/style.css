@@ -1,0 +1,107 @@
+@font-face { font-family: "Keymaker Phosphor Small"; src: url("/fonts/phosphor-small.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Keymaker Phosphor'; src: url('/fonts/phosphor-matrix.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+:root { color-scheme: dark; background: #080a0d; font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace; font-synthesis: none; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+button, textarea { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+button { color: inherit; cursor: pointer; }
+button:disabled { cursor: not-allowed; opacity: .6; }
+button:focus-visible, a:focus-visible, textarea:focus-visible { outline: 2px solid #d1a2e4; outline-offset: 5px; }
+::selection { color: #fff; background: #653581; }
+.sr-only { position: absolute!important; width: 1px!important; height: 1px!important; padding: 0!important; margin: -1px!important; overflow: hidden!important; clip: rect(0,0,0,0)!important; white-space: nowrap!important; border: 0!important; }
+.phosphor-shell { --matrix: 'Keymaker Phosphor', ui-monospace, monospace; --ink: #eee5f4; --label: #b8a9c5; --accent: #d79de5; --grain: url('/phosphor-grain.png'); min-height: 100svh; color: var(--ink); isolation: isolate; position: relative; background: radial-gradient(ellipse at 10% 0%, #0c0d10, #08090b 45%, #06080b); }
+.phosphor-shell:before { content: ''; position: absolute; inset: 0; pointer-events: none; background: var(--grain); opacity: .018; z-index: -1; }
+.phosphor-main { min-height: 100svh; width: min(842px, 100%); margin-inline: auto; padding: clamp(24px, 5vh, 50px) 24px 22px; display: flex; flex-direction: column; justify-content: center; }
+.phosphor-stack { display: grid; gap: 12px; }
+.phosphor-card { position: relative; min-width: 0; min-height: 260px; isolation: isolate; padding: 32px 48px 46px; border-radius: 29px; border: 1px solid #151419; background: radial-gradient(ellipse 57% 23% at 50% 103%, #5309662b, transparent 86%), linear-gradient(180deg, transparent, #00000078 43%, #000000cc), linear-gradient(110deg, #14151a, #06080a); box-shadow: 0 0 0 2px #0006, inset 0 0 0 7px #000a, 0 2px 5px #0003; }
+.phosphor-card:before { content: ''; position: absolute; inset: 6px 6.5px 7px; border-radius: 22px; border: 2px solid transparent; background: linear-gradient(145deg, #534a5a, #2e2a35 35%, #24202a 66%, #342539) border-box; -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: .84; pointer-events: none; }
+.phosphor-card:after { content: ''; position: absolute; inset: 9px; border: 1px solid #14121948; border-radius: 20px; background: var(--grain); opacity: .018; z-index: -1; pointer-events: none; }
+.edge-light { position: absolute; bottom: 7px; height: 2px; left: 11%; right: 11%; background: linear-gradient(90deg, transparent, #402246 19%, #a354b1 40%, #cd80da 51%, #683076 72%, transparent); box-shadow: 0 -1px 6px #89379a30, 0 1px 3px #89379a26; pointer-events: none; }
+.edge-light:before { content: ''; position: absolute; inset: -23px 10% -1px; background: radial-gradient(ellipse at bottom, #5e0d7129, transparent 73%); }
+.card-title { margin: 0 0 14px 7px; color: var(--label); font: 400 38px/1.2 var(--matrix); letter-spacing: 2.2px; text-transform: uppercase; }
+.well { display: flex; align-items: stretch; min-height: 112px; border: 2px solid transparent; border-radius: 15px; background: linear-gradient(114deg, #010204, #020306) padding-box, linear-gradient(140deg, #39323e, #1c1922 52%, #3d2145) border-box; box-shadow: 0 -3px 0 #0007, 0 1px 0 #0d0912d9, inset 0 1px 4px #000; }
+.value-button { min-width: 0; flex: 1; padding: 16px 22px 16px 28px; background: transparent; border: 0; border-radius: 13px 0 0 13px; display: flex; align-items: center; text-align: left; user-select: text; -webkit-user-select: text; }
+.value-button:hover { background: #53275e0e; }
+.value-button:focus-visible { outline-offset: -7px; }
+.value-text { display: block; max-width: 100%; font: 400 48px/1.32 var(--matrix); font-kerning: none; font-variant-ligatures: none; overflow-wrap: anywhere; user-select: text; -webkit-user-select: text; }
+.phosphor-card[data-kind=memorable] .value-text { font-size: 30px; line-height: 1.4; text-wrap: pretty; }
+.grouped-half { white-space: nowrap; }
+.phosphor-card[data-kind=random] .value-text { word-break: break-all; text-wrap: balance; }
+.phosphor-card[data-kind=memorable] .value-button { padding-block: 12px; }
+.copy-button { flex: 0 0 148px; margin: -2px -2px -2px 0; padding: 14px 6px 14px 9px; border: 2px solid transparent; border-radius: 15px; background: linear-gradient(128deg, #1b1b21, #0b0b0f 58%, #030407) padding-box, linear-gradient(133deg, #bc83cf, #765280 34%, #593464 76%, #392140) border-box; box-shadow: inset 0 0 0 2px #000b, 0 0 0 1px #07050ab3; color: var(--accent); font: 400 43px/1 var(--matrix); letter-spacing: 2px; transition: box-shadow .13s, transform .1s; }
+.copy-button:hover, .copy-button.is-copied { color: #efc5fa; background: linear-gradient(128deg, #251b2d, #0d0913) padding-box, linear-gradient(133deg, #d69deb, #8e5f9d) border-box; box-shadow: inset 0 0 0 2px #000b, 0 0 13px #9849af1a; }
+.copy-button:active { transform: translateY(1px); }
+.phosphor-hint { margin: 18px 0 0; text-align: center; font-size: 11px; line-height: 1.6; color: #ad9aba; }
+.phosphor-footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 20px; margin: 10px 8px 0; font-size: 11px; line-height: 1.5; color: #ad9aba; }
+.phosphor-footer nav { display: flex; flex-wrap: wrap; gap: 16px; }
+.phosphor-footer a, .phosphor-footer span, .phosphor-footer button { min-height: 44px; display: inline-flex; align-items: center; color: inherit; background: none; border: 0; padding: 0; text-decoration: none; }
+.phosphor-footer [aria-current] { color: #dfbde9; }
+.phosphor-footer a:hover, .phosphor-footer button:hover { color: #f2d8fc; text-decoration: underline; text-underline-offset: 4px; }
+.phosphor-footer kbd { margin-left: 8px; padding: 0 5px; border: 1px solid #665070; border-radius: 3px; font: inherit; }
+.phosphor-error { padding: 16px; border: 1px solid #9668a4; border-radius: 10px; background: #1d1323; font-size: 13px; line-height: 1.7; }
+.phosphor-error button { background: none; border: 0; text-decoration: underline; min-height: 44px; }
+.phosphor-shell dialog { width: min(480px, calc(100vw - 36px)); padding: 28px; color: #e8daef; background: #101017; border: 1px solid #80598e; border-radius: 21px; box-shadow: inset 0 0 0 5px #08090d, 0 20px 100px #000; }
+.phosphor-shell dialog::backdrop { background: #050609cf; backdrop-filter: blur(5px); }
+.phosphor-shell dialog h2 { margin: 0 0 18px; font: 400 29px/1.3 var(--matrix); }
+.phosphor-shell dialog p { font-size: 13px; line-height: 1.8; color: #c2b3ce; }
+.phosphor-shell dialog button { display: block; min-height: 44px; margin: 24px 0 0 auto; padding: 10px 20px; background: #23162b; border: 1px solid #9867a8; border-radius: 7px; color: #ebc7f5; }
+.phosphor-shell dialog textarea { resize: vertical; width: 100%; min-height: 110px; padding: 12px; border: 1px solid #856b90; border-radius: 7px; background: #050509; color: #f0e2f7; font-size: 16px; line-height: 1.7; }
+.phosphor-missing { margin: 15vh auto; max-width: 600px; padding: 24px; color: #eee; }
+.phosphor-missing a { color: #e4b4f4; }
+@media (max-width: 760px) {
+ .phosphor-card { padding: 30px 32px 38px; min-height: 232px; }
+ .card-title { font-size: 34px; }
+ .value-button { padding-left: 22px; padding-right: 18px; }
+ .value-text { font-size: 36px; }
+ .copy-button { flex-basis: 124px; font-size: 36px; }
+}
+@media (max-width: 600px) {
+ .phosphor-shell { --matrix: "Keymaker Phosphor Small", ui-monospace, monospace; }
+ .phosphor-main { padding: 28px 18px 16px; }
+ .phosphor-stack { gap: 13px; }
+ .phosphor-card { min-height: 198px; padding: 24px 20px 30px; border-radius: 24px; }
+ .phosphor-card:before { border-radius: 18px; }
+ .phosphor-card:after { border-radius: 16px; }
+ .card-title { margin: 0 0 15px 6px; font-size: 28px; letter-spacing: 1.7px; }
+ .well { min-height: 88px; border-radius: 12px; flex-direction: column; }
+ .value-button { padding: 14px 16px; min-height: 80px; border-radius: 10px 10px 0 0; }
+ .value-text { font-size: 28px; line-height: 1.5; }
+ .phosphor-card[data-kind=memorable] .value-text { font-size: 25px; }
+ .copy-button { flex-basis: auto; min-height: 48px; margin: 0 -2px -2px; font-size: 26px; letter-spacing: .5px; padding: 7px 4px; border-radius: 0 0 12px 12px; }
+ .phosphor-footer { justify-content: center; gap: 0 18px; }
+ .phosphor-footer nav { gap: 15px; }
+}
+@media (max-width: 350px) {
+ .phosphor-main { padding-inline: 12px; }
+ .phosphor-card { padding-inline: 16px; }
+ .card-title { font-size: 26px; letter-spacing: 1px; }
+ .value-button { padding-inline: 10px; }
+ .value-text { font-size: 26px; }
+ .copy-button { font-size: 24px; }
+}
+/* Compact desktop proportions, rendered at native browser scale. */
+@media (min-width: 601px) {
+ .phosphor-main { width: min(674px, 100%); padding: clamp(20px, 4vh, 40px) 19px 18px; }
+ .phosphor-stack { gap: 10px; }
+ .phosphor-card { min-height: 208px; padding: 26px 38px 37px; border-radius: 24px; box-shadow: 0 0 0 2px #0006, inset 0 0 0 6px #000a, 0 2px 4px #0003; }
+ .phosphor-card:before { inset: 5px; border-width: 1px; border-radius: 18px; }
+ .phosphor-card:after { inset: 7px; border-radius: 16px; }
+ .edge-light { bottom: 5px; height: 1px; }
+ .edge-light:before { top: -18px; }
+ .card-title { margin: 0 0 11px 6px; font-size: 30.4px; letter-spacing: 1.76px; }
+ .well { min-height: 90px; border-radius: 12px; }
+ .value-button { padding: 13px 18px 13px 22px; border-radius: 10px 0 0 10px; }
+ .value-text { font-size: 38.4px; }
+ .phosphor-card[data-kind=memorable] .value-text { font-size: 24px; }
+ .phosphor-card[data-kind=memorable] .value-button { padding-block: 10px; }
+ .copy-button { flex-basis: 118px; padding: 11px 5px 11px 7px; border-radius: 12px; font-size: 34.4px; letter-spacing: 1.6px; }
+ .phosphor-hint { margin-top: 14px; }
+ .phosphor-footer { margin: 8px 6px 0; }
+}
+@media (prefers-reduced-motion: reduce) { *, *:before, *:after { animation: none!important; transition: none!important; scroll-behavior: auto!important; } }
+@media (forced-colors: active) {
+ .phosphor-card, .well, .copy-button { border: 1px solid ButtonText; background: Canvas; }
+ .phosphor-shell:before, .phosphor-card:before, .phosphor-card:after, .edge-light { display: none; }
+ .card-title, .value-text, .copy-button { font-family: ui-monospace, monospace; color: CanvasText; }
+}
