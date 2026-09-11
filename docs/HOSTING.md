@@ -22,3 +22,7 @@ A `/keymaker/` path shares an origin with its parent site. CSP does not isolate 
 ## Optional GitHub checks
 
 `github-checks.yml.example` is a read-only-permission workflow template for `npm run verify` and the nested build. Copy it to `.github/workflows/checks.yml` using a GitHub identity allowed to manage workflows. The publishing credential used for this release has no workflow-write permission, so the template is included without enabling Actions. The documented checks also run locally.
+
+## Current public deployment
+
+The public app runs at `https://keymaker.reydoes.com/`, with HTTPS enforced. `reydoes.com/keymaker` and its theme paths, plus `/keys`, `/password` and `/passwords`, redirect there. The main domain's CDN injects scripts; the dedicated origin serves the reviewed static files without that injection. The nested build remains supported for hosts that can serve it unchanged. The app is intentionally not isolated merely by a path within the portfolio.

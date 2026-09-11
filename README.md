@@ -4,7 +4,7 @@ A password generator with the feel of a small retro console. Choose grouped char
 
 [Use Keymaker](https://reydoes.com/keymaker/) · [Dedicated site](https://keymaker.reydoes.com/) · [The math](docs/RANDOMNESS.md) · [Security boundaries](SECURITY.md)
 
-Quick addresses on reydoes.com: `/keymaker`, `/keys`, `/password`, and `/passwords`. The dedicated site also opens each design at `/studio`, `/dream`, `/horizon`, or `/phosphor`.
+Quick addresses on reydoes.com (forwarding to the dedicated app origin): `/keymaker`, `/keys`, `/password`, and `/passwords`. The dedicated site also opens each design at `/studio`, `/dream`, `/horizon`, or `/phosphor`.
 
 ## Why I built it
 
