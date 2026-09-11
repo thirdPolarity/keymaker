@@ -2,7 +2,9 @@
 
 A password generator with the feel of a small retro console. Choose grouped characters, a configurable random string, or an EFF-word passphrase; generate and copy. Four interfaces share the same cryptographic core: **Studio, Dream, Horizon and Phosphor**.
 
-[Use Keymaker](https://reydoes.com/keymaker/) · [The math](docs/RANDOMNESS.md) · [Security boundaries](SECURITY.md)
+[Use Keymaker](https://reydoes.com/keymaker/) · [Dedicated site](https://keymaker.reydoes.com/) · [The math](docs/RANDOMNESS.md) · [Security boundaries](SECURITY.md)
+
+Quick addresses on reydoes.com: `/keymaker`, `/keys`, `/password`, and `/passwords`. The dedicated site also opens each design at `/studio`, `/dream`, `/horizon`, or `/phosphor`.
 
 ## Why I built it
 

@@ -5,3 +5,5 @@ dist/
 artifacts/
 
 dist-portfolio/
+
+.netlify/
