@@ -6,6 +6,8 @@ A password generator with the feel of a small retro console. Choose grouped char
 
 Quick addresses on reydoes.com (forwarding to the dedicated app origin): `/keymaker`, `/keys`, `/password`, and `/passwords`. The dedicated site also opens each design at `/studio`, `/dream`, `/horizon`, or `/phosphor`.
 
+Studio opens in SNES with the Obsidian finish. Dream and Horizon open in SNES light mode; Phosphor has its own fixed palette. Each design remembers your appearance choices for later visits.
+
 ## Why I built it
 
 I wanted a password tool I could use privately, understand, and enjoy looking at. The visual starting point was Sega Dreamcast aesthetics, the Super Nintendo era, and the futuristic interfaces I have always wished would come back into style. Phosphor draws on the pixel art and custom graphics I enjoyed across DeviantArt and early gaming forums. It grew into four different interpretations of the same small task.

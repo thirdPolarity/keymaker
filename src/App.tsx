@@ -230,14 +230,14 @@ export default function App() {
     Math.max(
       0,
       palettes.findIndex(
-        (p) => p.name === readPreference("keymaker.palette", "Amber terminal"),
+        (p) => p.name === readPreference("keymaker.palette", "SNES"),
       ),
     ),
   );
   const [dark, setDark] = useState(
     () =>
       currentRoute() === "/obsidian" ||
-      readPreference("keymaker.finish", "titanium") === "obsidian",
+      readPreference("keymaker.finish", "obsidian") === "obsidian",
   );
   const [copied, setCopied] = useState<Mode | null>(null);
   const [message, setMessage] = useState("");

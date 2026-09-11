@@ -237,7 +237,7 @@ export default function App({ variant = "dream" }: { variant?: "dream" | "horizo
   const [dark, setDark] = useState(
     () =>
       currentRoute() === "/obsidian" ||
-      readPreference(`${preferencePrefix}.mode`, horizon ? "dark" : "light") === "dark",
+      readPreference(`${preferencePrefix}.mode`, "light") === "dark",
   );
   const [copied, setCopied] = useState<Mode | null>(null);
   const [message, setMessage] = useState("");
